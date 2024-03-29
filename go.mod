@@ -1,4 +1,4 @@
-module github.com/looplooker/gohub
+module gohub
 
 go 1.22
 
