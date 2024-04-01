@@ -2,6 +2,7 @@
 package requests
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/thedevsaddam/govalidator"
 )
 
@@ -9,7 +10,7 @@ type SignupPhoneExistRequest struct {
 	Phone string `json:"phone,omitempty" valid:"phone"`
 }
 
-func SignupPhoneExist(data interface{}) map[string][]string {
+func SignupPhoneExist(data interface{}, c *gin.Context) map[string][]string {
 	// 自定义验证规则
 	rules := govalidator.MapData{
 		"phone": []string{"required", "digits:11"},
@@ -28,7 +29,7 @@ type SignupEmailExistRequest struct {
 	Email string `json:"email,omitempty" valid:"email"`
 }
 
-func SignupEmailExist(data interface{}) map[string][]string {
+func SignupEmailExist(data interface{}, c *gin.Context) map[string][]string {
 	// 自定义验证规则
 	rules := govalidator.MapData{
 		"email": []string{"required", "min:4", "max:30", "email"},
