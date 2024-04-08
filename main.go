@@ -4,11 +4,11 @@ import (
 	"flag"
 	"fmt"
 
+	"github.com/gin-gonic/gin"
+
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
-
-	"github.com/gin-gonic/gin"
 )
 
 func init() {
