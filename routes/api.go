@@ -54,11 +54,12 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			uc := new(controllers.UsersController)
 
 			// 获取当前用户
-			v1.GET("/user", middlewares.AuthJWT(), uc.CurrentUser)
+			v1.GET("/user", uc.CurrentUser)
 			usersGroup := v1.Group("/users")
 			{
 				usersGroup.GET("", uc.Index)
 				usersGroup.PUT("", middlewares.AuthJWT(), uc.UpdateProfile)
+				usersGroup.PUT("/email", middlewares.AuthJWT(), uc.UpdateEmail)
 			}
 
 			cgc := new(controllers.CategoriesController)
