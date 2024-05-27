@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"net/http"
+
 	"gohub/bootstrap"
 	"gohub/pkg/config"
 	"gohub/pkg/console"
@@ -31,6 +33,7 @@ func runWeb(cmd *cobra.Command, args []string) {
 
 	// 初始化路由绑定
 	bootstrap.SetupRoute(router)
+	router.StaticFS("/uploads", http.Dir("./public/uploads"))
 
 	// 运行服务器
 	err := router.Run(":" + config.Get("app.port"))
